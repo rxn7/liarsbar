@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl42bcfxa2ots"]
+
+[ext_resource type="Theme" uid="uid://bbrb8gj4v85ce" path="res://theme.tres" id="1_610xc"]
+[ext_resource type="Script" uid="uid://be08pft0e4b1q" path="res://scripts/lobby/PlayerNameEntry.cs" id="2_f3fjy"]
+
+[node name="PlayerNameEntry" type="LineEdit"]
+custom_minimum_size = Vector2(471, 223)
+anchors_preset = -1
+anchor_right = 0.245
+anchor_bottom = 0.20600002
+offset_right = 0.5999756
+offset_bottom = 0.519989
+theme = ExtResource("1_610xc")
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 55
+placeholder_text = "Imię..."
+alignment = 1
+max_length = 18
+context_menu_enabled = false
+emoji_menu_enabled = false
+middle_mouse_paste_enabled = false
+drag_and_drop_selection_enabled = false
+script = ExtResource("2_f3fjy")

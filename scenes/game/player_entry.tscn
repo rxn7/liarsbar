@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdh4172p0bdy5"]
+
+[ext_resource type="Theme" uid="uid://bbrb8gj4v85ce" path="res://theme.tres" id="1_ogpb0"]
+
+[node name="PlayerNameEntry" type="Button"]
+custom_minimum_size = Vector2(471, 223)
+anchors_preset = -1
+anchor_right = 0.245
+anchor_bottom = 0.20600002
+offset_right = 0.5999756
+offset_bottom = 0.519989
+theme = ExtResource("1_ogpb0")
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 55
+action_mode = 0
+text = "PlayerName"

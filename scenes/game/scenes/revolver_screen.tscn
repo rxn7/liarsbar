@@ -1,0 +1,280 @@
+[gd_scene load_steps=11 format=3 uid="uid://5dnc5tlg8xk"]
+
+[ext_resource type="Script" uid="uid://2lwaeqhyu3kj" path="res://scripts/game/screens/RevolverGameScreen.cs" id="1_l5hgf"]
+[ext_resource type="Texture2D" uid="uid://doy0msg75p653" path="res://textures/revolver.png" id="1_xoyjn"]
+[ext_resource type="Texture2D" uid="uid://da0mg7n2np02p" path="res://textures/cylinder.png" id="2_l5hgf"]
+[ext_resource type="Script" uid="uid://c5rpm32dyp06l" path="res://scripts/game/RevolverCylinder.cs" id="3_waink"]
+[ext_resource type="FontFile" uid="uid://dax8ouhp0xxpd" path="res://fonts/WinkyRough-Regular.ttf" id="4_rju5f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iywne"]
+font = ExtResource("4_rju5f")
+font_size = 46
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_lnu2h"]
+offsets = PackedFloat32Array(0.019178081, 0.7, 0.7041096, 1)
+colors = PackedColorArray(0.09019608, 0.07450981, 0.047058824, 1, 0.089999996, 0.073079996, 0.0477, 1, 0.53, 0.53, 0.53, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lbhrr"]
+gradient = SubResource("Gradient_lnu2h")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lbhrr"]
+font = ExtResource("4_rju5f")
+font_size = 64
+outline_size = 10
+outline_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p57ef"]
+font = ExtResource("4_rju5f")
+font_size = 75
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="RevolverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l5hgf")
+
+[node name="Revolver" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -480.0
+offset_right = 480.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+action_mode = 0
+texture_normal = ExtResource("1_xoyjn")
+texture_pressed = ExtResource("1_xoyjn")
+texture_hover = ExtResource("1_xoyjn")
+texture_disabled = ExtResource("1_xoyjn")
+texture_focused = ExtResource("1_xoyjn")
+stretch_mode = 5
+
+[node name="ChancesLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -512.0
+offset_bottom = 62.0
+grow_horizontal = 0
+text = "0/6 | 17%"
+label_settings = SubResource("LabelSettings_iywne")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cylinder" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.73300004
+anchor_right = 1.0
+anchor_bottom = 0.47400004
+offset_left = 0.6398926
+offset_bottom = 0.079956055
+grow_horizontal = 0
+texture = ExtResource("2_l5hgf")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("3_waink")
+
+[node name="SlotContainer" type="Control" parent="Cylinder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Slot1" type="TextureRect" parent="Cylinder/SlotContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.356
+anchor_top = 0.22600001
+anchor_right = 0.402
+anchor_bottom = 0.402
+offset_left = -38.99994
+offset_top = -1.0000076
+offset_right = 38.00006
+offset_bottom = 11.0
+texture = SubResource("GradientTexture2D_lbhrr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Cylinder/SlotContainer/Slot1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "?"
+label_settings = SubResource("LabelSettings_lbhrr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot2" type="TextureRect" parent="Cylinder/SlotContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.356
+anchor_top = 0.22600001
+anchor_right = 0.402
+anchor_bottom = 0.402
+offset_left = -100.27203
+offset_top = 93.287994
+offset_right = -23.272034
+offset_bottom = 105.287994
+texture = SubResource("GradientTexture2D_lbhrr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Cylinder/SlotContainer/Slot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "?"
+label_settings = SubResource("LabelSettings_lbhrr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot3" type="TextureRect" parent="Cylinder/SlotContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.356
+anchor_top = 0.22600001
+anchor_right = 0.402
+anchor_bottom = 0.402
+offset_left = -37.272034
+offset_top = 196.288
+offset_right = 39.727966
+offset_bottom = 208.288
+texture = SubResource("GradientTexture2D_lbhrr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Cylinder/SlotContainer/Slot3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "?"
+label_settings = SubResource("LabelSettings_lbhrr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot4" type="TextureRect" parent="Cylinder/SlotContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.356
+anchor_top = 0.22600001
+anchor_right = 0.402
+anchor_bottom = 0.402
+offset_left = 81.72797
+offset_top = 196.288
+offset_right = 158.72797
+offset_bottom = 208.288
+texture = SubResource("GradientTexture2D_lbhrr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Cylinder/SlotContainer/Slot4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "?"
+label_settings = SubResource("LabelSettings_lbhrr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot5" type="TextureRect" parent="Cylinder/SlotContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.356
+anchor_top = 0.22600001
+anchor_right = 0.402
+anchor_bottom = 0.402
+offset_left = 147.72797
+offset_top = 94.287994
+offset_right = 224.72797
+offset_bottom = 106.287994
+texture = SubResource("GradientTexture2D_lbhrr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Cylinder/SlotContainer/Slot5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "?"
+label_settings = SubResource("LabelSettings_lbhrr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot6" type="TextureRect" parent="Cylinder/SlotContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.356
+anchor_top = 0.22600001
+anchor_right = 0.402
+anchor_bottom = 0.402
+offset_left = 84.0
+offset_top = -1.0000076
+offset_right = 161.0
+offset_bottom = 11.0
+texture = SubResource("GradientTexture2D_lbhrr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Cylinder/SlotContainer/Slot6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "?"
+label_settings = SubResource("LabelSettings_lbhrr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShootingPlayerLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.906
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.5199585
+grow_horizontal = 2
+grow_vertical = 0
+text = "Strzela: Gracz"
+label_settings = SubResource("LabelSettings_p57ef")
+horizontal_alignment = 1
+vertical_alignment = 1

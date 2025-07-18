@@ -1,0 +1,151 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1wjaj0k4ve35"]
+
+[ext_resource type="Script" uid="uid://bkfv0qucinjyp" path="res://scripts/lobby/LobbyManager.cs" id="1_4ytvr"]
+[ext_resource type="FontFile" uid="uid://dax8ouhp0xxpd" path="res://fonts/WinkyRough-Regular.ttf" id="1_mhnvy"]
+[ext_resource type="FontFile" uid="uid://b4v5o72c7rdgw" path="res://fonts/CoffeeTin_Initials.ttf" id="1_vjb58"]
+[ext_resource type="PackedScene" uid="uid://bl42bcfxa2ots" path="res://scenes/lobby/player_name_entry.tscn" id="2_4ytvr"]
+[ext_resource type="Theme" uid="uid://bbrb8gj4v85ce" path="res://theme.tres" id="4_g3eks"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v86rl"]
+font = ExtResource("1_mhnvy")
+font_size = 86
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mhnvy"]
+font = ExtResource("1_vjb58")
+font_size = 136
+font_color = Color(0, 0, 0, 1)
+outline_size = 15
+outline_color = Color(0.8, 0.6509804, 0.42352942, 1)
+
+[node name="Menu" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.55, 0.44660002, 0.2915, 1)
+
+[node name="Screens" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LobbyScreen" type="Control" parent="Screens"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4ytvr")
+m_playerNameEntryScene = ExtResource("2_4ytvr")
+
+[node name="Label" type="Label" parent="Screens/LobbyScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.109000005
+offset_bottom = 0.27999115
+grow_horizontal = 2
+text = "Dodaj Graczy"
+label_settings = SubResource("LabelSettings_v86rl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerNameContainer" type="FlowContainer" parent="Screens/LobbyScreen"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.15
+anchor_right = 1.0
+anchor_bottom = 0.76400006
+offset_bottom = -0.12005615
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+alignment = 1
+last_wrap_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Screens/LobbyScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.78900003
+anchor_right = 0.70000005
+anchor_bottom = 0.97900003
+offset_top = -0.12005615
+offset_right = -0.00012207031
+offset_bottom = -0.32006836
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 74
+alignment = 1
+
+[node name="AddPlayerButton" type="Button" parent="Screens/LobbyScreen/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(117.75, 117.75)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_g3eks")
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 55
+text = "DODAJ"
+
+[node name="StartGameButton" type="Button" parent="Screens/LobbyScreen/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(117.75, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_g3eks")
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 55
+text = "GRAJ"
+
+[node name="MainMenu" type="Control" parent="Screens"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Screens/MainMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 137.0
+grow_horizontal = 2
+text = "GAMBLER'S CHAMBER"
+label_settings = SubResource("LabelSettings_mhnvy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="Screens/MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -367.0
+offset_top = -113.0
+offset_right = 367.0
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_g3eks")
+theme_override_font_sizes/font_size = 125
+action_mode = 0
+text = "Zagraj"

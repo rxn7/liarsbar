@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://bls836mnbtl4o"]
+
+[ext_resource type="Script" uid="uid://byfieb07yqhwa" path="res://scripts/game/GameManager.cs" id="1_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://dt3ihvajr5s3j" path="res://scenes/game/scenes/action_screen.tscn" id="2_iywne"]
+[ext_resource type="PackedScene" uid="uid://5dnc5tlg8xk" path="res://scenes/game/scenes/revolver_screen.tscn" id="3_p57ef"]
+[ext_resource type="PackedScene" uid="uid://dix864df6xayt" path="res://scenes/game/scenes/call_out_screen.tscn" id="4_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://b3emdtoy6evbj" path="res://scenes/game/scenes/call_out_result_screen.tscn" id="5_gee14"]
+
+[node name="Game" type="Node" node_paths=PackedStringArray("ActionScreen", "CallOutScreen", "CallOutResultScreen", "RevolverScreen")]
+script = ExtResource("1_lbhrr")
+ActionScreen = NodePath("ScreenContainer/ActionScreen")
+CallOutScreen = NodePath("ScreenContainer/CallOutScreen")
+CallOutResultScreen = NodePath("ScreenContainer/CallOutResultScreen")
+RevolverScreen = NodePath("ScreenContainer/RevolverScreen")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.54901963, 0.44705883, 0.2901961, 1)
+
+[node name="ScreenContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ActionScreen" parent="ScreenContainer" instance=ExtResource("2_iywne")]
+visible = false
+layout_mode = 1
+
+[node name="RevolverScreen" parent="ScreenContainer" instance=ExtResource("3_p57ef")]
+visible = false
+layout_mode = 1
+
+[node name="CallOutScreen" parent="ScreenContainer" instance=ExtResource("4_u5sy4")]
+visible = false
+layout_mode = 1
+
+[node name="CallOutResultScreen" parent="ScreenContainer" instance=ExtResource("5_gee14")]
+visible = false
+layout_mode = 1

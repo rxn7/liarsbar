@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3emdtoy6evbj"]
+
+[ext_resource type="FontFile" uid="uid://dax8ouhp0xxpd" path="res://fonts/WinkyRough-Regular.ttf" id="1_bgk0r"]
+[ext_resource type="Script" uid="uid://e7iwgnikepww" path="res://scripts/game/screens/CallOutResultGameScreen.cs" id="1_rvhix"]
+[ext_resource type="Theme" uid="uid://bbrb8gj4v85ce" path="res://theme.tres" id="2_rvhix"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]
+font = ExtResource("1_bgk0r")
+font_size = 86
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gee14"]
+font = ExtResource("1_bgk0r")
+font_size = 89
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p57ef"]
+font = ExtResource("1_bgk0r")
+font_size = 75
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CallOutResultScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rvhix")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.109000005
+offset_bottom = 0.27999115
+grow_horizontal = 2
+text = "Sprawdzenie"
+label_settings = SubResource("LabelSettings_u5sy4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.128
+anchor_right = 1.0
+anchor_bottom = 0.87200004
+offset_top = -0.2400055
+offset_bottom = 0.2399292
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 144
+alignment = 1
+
+[node name="CalledPlayerLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Czy gracz Gracz mówił prawdę?"
+label_settings = SubResource("LabelSettings_gee14")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 212)
+layout_mode = 2
+theme_override_constants/separation = 449
+alignment = 1
+
+[node name="LieButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+theme = ExtResource("2_rvhix")
+theme_override_colors/font_color = Color(0.88, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 80
+text = "Nie"
+
+[node name="TruthButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+theme = ExtResource("2_rvhix")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 80
+text = "Tak"
+
+[node name="CallingPlayerLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.906
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.5199585
+grow_horizontal = 2
+grow_vertical = 0
+text = "Sprawdza: Gracz"
+label_settings = SubResource("LabelSettings_p57ef")
+horizontal_alignment = 1
+vertical_alignment = 1
