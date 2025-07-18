@@ -1,10 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://5dnc5tlg8xk"]
+[gd_scene load_steps=16 format=3 uid="uid://5dnc5tlg8xk"]
 
 [ext_resource type="Script" uid="uid://2lwaeqhyu3kj" path="res://scripts/game/screens/RevolverGameScreen.cs" id="1_l5hgf"]
 [ext_resource type="Texture2D" uid="uid://doy0msg75p653" path="res://textures/revolver.png" id="1_xoyjn"]
 [ext_resource type="Texture2D" uid="uid://da0mg7n2np02p" path="res://textures/cylinder.png" id="2_l5hgf"]
 [ext_resource type="Script" uid="uid://c5rpm32dyp06l" path="res://scripts/game/RevolverCylinder.cs" id="3_waink"]
 [ext_resource type="FontFile" uid="uid://dax8ouhp0xxpd" path="res://fonts/WinkyRough-Regular.ttf" id="4_rju5f"]
+[ext_resource type="AudioStream" uid="uid://ctir3khscd6ht" path="res://audio/dryfire/dryfire2.ogg" id="4_u3sk2"]
+[ext_resource type="AudioStream" uid="uid://bwnk2p667ve5k" path="res://audio/dryfire/dryfire3.ogg" id="5_65f60"]
+[ext_resource type="AudioStream" uid="uid://caqhq7d6lehts" path="res://audio/fire/fire.mp3" id="6_65f60"]
+[ext_resource type="AudioStream" uid="uid://qynyxso465j8" path="res://audio/dryfire/dryfire1.ogg" id="6_waink"]
+[ext_resource type="Script" uid="uid://csbxbffn2fehn" path="res://scripts/game/FireSound.cs" id="7_rju5f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_iywne"]
 font = ExtResource("4_rju5f")
@@ -44,6 +49,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l5hgf")
+
+[node name="FireSound" type="AudioStreamPlayer" parent="."]
+script = ExtResource("7_rju5f")
+m_dryFireSounds = Array[AudioStream]([ExtResource("6_waink"), ExtResource("4_u3sk2"), ExtResource("5_65f60")])
+m_fireSounds = [ExtResource("6_65f60")]
 
 [node name="Revolver" type="TextureButton" parent="."]
 layout_mode = 1

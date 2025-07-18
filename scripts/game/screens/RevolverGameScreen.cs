@@ -4,6 +4,7 @@ using Godot;
 public partial class RevolverGameScreen : GameScreen {
 	public Player ShootingPlayer { get; set; } = null;
 
+	private FireSound m_fireSound;
 	private RevolverCylinder m_cylinder;
 	private TextureButton m_revolverButton;
 	private Label m_chancesLabel;
@@ -13,6 +14,7 @@ public partial class RevolverGameScreen : GameScreen {
 		m_chancesLabel = GetNode<Label>("ChancesLabel");
 		m_shootingPlayerLabel = GetNode<Label>("ShootingPlayerLabel");
 		m_cylinder = GetNode<RevolverCylinder>("Cylinder");
+		m_fireSound = GetNode<FireSound>("FireSound");
 
 		m_revolverButton = GetNode<TextureButton>("Revolver");
 		m_revolverButton.Pressed += Fire;
@@ -38,6 +40,13 @@ public partial class RevolverGameScreen : GameScreen {
 		m_revolverButton.Disabled = true;
 
 		ShootingPlayer.Fire();
+
+		if(ShootingPlayer.IsDead) {
+			m_fireSound.PlayFire();
+		} else {
+			m_fireSound.PlayDryFire();
+		}
+
 		UpdateCylinder();
 
 		SceneTreeTimer timer = GetTree().CreateTimer(2f);

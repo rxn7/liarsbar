@@ -15,22 +15,20 @@ public static class GameContext {
 
 	public static Player WinnerPlayer { get; private set; } = null;
 
-	private static RandomNumberGenerator s_rng = new();
-
 	public static void Reset() {
 		Players.Clear();
 		WinnerPlayer = null;
 	}
 
 	public static void AddPlayer(string name) {
-		int chamberWithBullet = s_rng.RandiRange(0, CHAMBER_COUNT - 1);
+		int chamberWithBullet = GD.RandRange(0, CHAMBER_COUNT - 1);
 
 		Player player = new Player(name, chamberWithBullet);
 		Players.Add(player);
 	}
 	
 	public static void Start() {
-		CurrentPlayerIndex = s_rng.RandiRange(0, PlayerCount - 1);
+		CurrentPlayerIndex = GD.RandRange(0, PlayerCount - 1);
 	}
 
 	public static void NextPlayer() {
