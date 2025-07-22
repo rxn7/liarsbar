@@ -6,8 +6,8 @@
 custom_minimum_size = Vector2(471, 223)
 anchors_preset = -1
 anchor_right = 0.245
-anchor_bottom = 0.20600002
-offset_right = 0.5999756
+anchor_bottom = 0.206
+offset_right = 0.599976
 offset_bottom = 0.519989
 theme = ExtResource("1_ogpb0")
 theme_override_constants/outline_size = 6
