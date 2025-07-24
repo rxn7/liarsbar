@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3emdtoy6evbj"]
 
 [ext_resource type="FontFile" uid="uid://dax8ouhp0xxpd" path="res://fonts/WinkyRough-Regular.ttf" id="1_bgk0r"]
-[ext_resource type="Script" uid="uid://e7iwgnikepww" path="res://scripts/game/screens/CallOutResultGameScreen.cs" id="1_rvhix"]
+[ext_resource type="Script" uid="uid://e7iwgnikepww" path="res://scripts/game/screens/CallOutGameScreen.cs" id="1_rvhix"]
 [ext_resource type="Theme" uid="uid://bbrb8gj4v85ce" path="res://theme.tres" id="2_rvhix"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]

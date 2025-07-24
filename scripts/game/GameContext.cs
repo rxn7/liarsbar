@@ -31,6 +31,11 @@ public static class GameContext {
 		CurrentPlayerIndex = GD.RandRange(0, PlayerCount - 1);
 	}
 
+	public static Player GetPreviousPlayer() {
+		int idx = (CurrentPlayerIndex - 1 + PlayerCount) % PlayerCount;
+		return Players[idx];
+	}
+
 	public static void NextPlayer() {
 		if(CheckForWin()) {
 			return;

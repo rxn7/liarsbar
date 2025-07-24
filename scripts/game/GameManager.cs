@@ -3,7 +3,6 @@ using Godot;
 public partial class GameManager : Node {
 	[Export] public ActionGameScreen ActionScreen { get; private set; }
 	[Export] public CallOutGameScreen CallOutScreen { get; private set; }
-	[Export] public CallOutResultGameScreen CallOutResultScreen { get; private set; }
 	[Export] public RevolverGameScreen RevolverScreen { get; private set; }
 
 	private Control m_screenContainer;
