@@ -16,12 +16,22 @@ public partial class ActionGameScreen : GameScreen {
 		};
 
 		m_continueButton.Pressed += () => {
-			GameContext.NextPlayer();
+			GameContext.NextAlivePlayer();
 			m_game.SetScreen(this);
 		};
 	}
 
 	public override void Enter() {
 		m_playerTurnLabel.Text = $"Kolej: {GameContext.CurrentPlayer.Name}";
+
+		if(GameContext.IsFirstTurnOfRound) {
+			m_callOutButton.Disabled = true;
+			m_callOutButton.Text = $"";
+			m_callOutButton.Visible = false;
+		} else {
+			m_callOutButton.Disabled = false;
+			m_callOutButton.Text = $"Sprawdź gracza {GameContext.GetPreviousAlivePlayer().Name}";
+			m_callOutButton.Visible = true;
+		}
 	}
 }

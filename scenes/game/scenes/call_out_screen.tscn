@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dix864df6xayt"]
+[gd_scene load_steps=5 format=3 uid="uid://b2rd02vcqydp1"]
 
 [ext_resource type="FontFile" uid="uid://dax8ouhp0xxpd" path="res://fonts/WinkyRough-Regular.ttf" id="1_37glf"]
-[ext_resource type="Script" uid="uid://drh8aoo4x2jae" path="res://scripts/game/screens/CallOutGameScreen.cs" id="1_bv3nm"]
+[ext_resource type="Script" uid="uid://e7iwgnikepww" path="res://scripts/game/screens/CallOutGameScreen.cs" id="1_bv3nm"]
 [ext_resource type="Theme" uid="uid://bbrb8gj4v85ce" path="res://theme.tres" id="3_supo1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]

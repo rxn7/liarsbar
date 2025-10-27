@@ -3,7 +3,7 @@ using Godot;
 public partial class LobbyManager : Node {
 	private static readonly PackedScene GAME_SCENE = GD.Load<PackedScene>("res://scenes/game.tscn");
 
-	[Export] private int m_maxPlayers = 8;
+	[Export] private int m_maxPlayers = 4;
 	[Export] private PackedScene m_playerNameEntryScene;
 
 	private FlowContainer m_playerNameContainer;
@@ -22,6 +22,20 @@ public partial class LobbyManager : Node {
 
 		m_addPlayerButton = GetNode<Button>("%AddPlayerButton");
 		m_addPlayerButton.Pressed += AddPlayer;
+	}
+	
+	public override void _UnhandledInput(InputEvent ev) {
+		if(ev is InputEventKey keyEvent && keyEvent.Keycode == Key.F1 && keyEvent.Pressed && !keyEvent.Echo) {
+			GameContext.Reset();
+
+			GameContext.AddPlayer("Player1");
+			GameContext.AddPlayer("Player2");
+			GameContext.AddPlayer("Player3");
+			GameContext.AddPlayer("Player4");
+
+			GetTree().ChangeSceneToPacked(GAME_SCENE);
+			GameContext.StartNewRound();
+		}
 	}
 
 	public override void _PhysicsProcess(double delta) {
@@ -57,6 +71,6 @@ public partial class LobbyManager : Node {
 		}
 
 		GetTree().ChangeSceneToPacked(GAME_SCENE);
-		GameContext.Start();
+		GameContext.StartNewRound();
 	}
 }

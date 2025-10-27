@@ -29,7 +29,7 @@ public partial class RevolverGameScreen : GameScreen {
 		m_revolverButton.Disabled = false;
 
 		m_shootingPlayerLabel.Text = $"Strzela: {ShootingPlayer.Name}";
-		UpdateCylinder();
+		UpdateCylinderUI();
 	}
 
 	public override void Exit() {
@@ -47,16 +47,18 @@ public partial class RevolverGameScreen : GameScreen {
 			m_fireSound.PlayDryFire();
 		}
 
-		UpdateCylinder();
-
+		UpdateCylinderUI();
+		
 		SceneTreeTimer timer = GetTree().CreateTimer(2f);
 		timer.Timeout += () => {
-			GameContext.NextPlayer();
-			m_game.SetScreen(m_game.ActionScreen);
+			if(!GameContext.CheckForWin()) {
+				GameContext.StartNewRound();
+				m_game.SetScreen(m_game.ActionScreen);
+			}
 		};
 	}
 
-	private void UpdateCylinder() {
+	private void UpdateCylinderUI() {
 		m_cylinder.UpdateForPlayer(ShootingPlayer);
 		m_chancesLabel.Text = ShootingPlayer.FireChanceText();
 	}

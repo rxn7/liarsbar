@@ -1,8 +1,13 @@
 using Godot;
+using System.Linq;
 using System.Collections.Generic;
 
 public static class GameContext {
 	public const int CHAMBER_COUNT = 6;
+
+	public static event System.Action<Player> OnPlayerWon;
+
+	public static bool IsFirstTurnOfRound { get; private set; } = true;
 
 	public static List<Player> Players { get; private set; } = new();
 	public static int PlayerCount => Players.Count;
@@ -13,11 +18,10 @@ public static class GameContext {
 		set => CurrentPlayerIndex = Players.IndexOf(value);
 	}
 
-	public static Player WinnerPlayer { get; private set; } = null;
-
 	public static void Reset() {
+		CurrentPlayerIndex = 0;
+		IsFirstTurnOfRound = true;
 		Players.Clear();
-		WinnerPlayer = null;
 	}
 
 	public static void AddPlayer(string name) {
@@ -27,35 +31,52 @@ public static class GameContext {
 		Players.Add(player);
 	}
 	
-	public static void Start() {
-		CurrentPlayerIndex = GD.RandRange(0, PlayerCount - 1);
+	public static void StartNewRound() {
+		IsFirstTurnOfRound = true;
+
+		do {
+			CurrentPlayerIndex = GD.RandRange(0, PlayerCount - 1);
+		} while(CurrentPlayer.IsDead);
+
+		foreach(Player player in Players) {
+			GD.Print($"{player.Name}: {player.ChamberWithBullet}");
+		}
 	}
 
-	public static Player GetPreviousPlayer() {
+	public static Player GetPreviousAlivePlayer() {
 		int idx = (CurrentPlayerIndex - 1 + PlayerCount) % PlayerCount;
+
+		while(Players[idx].IsDead) {
+			idx = (idx - 1 + PlayerCount) % PlayerCount;
+		}
+
 		return Players[idx];
 	}
 
-	public static void NextPlayer() {
-		if(CheckForWin()) {
-			return;
-		}
-
+	public static void NextAlivePlayer() {
 		CurrentPlayerIndex = (CurrentPlayerIndex + 1) % PlayerCount;
 
 		if(CurrentPlayer.IsDead) {
-			NextPlayer();
+			NextAlivePlayer();
 		}
+
+		IsFirstTurnOfRound = false;
+	}
+
+	public static void EndRound() {
+		IsFirstTurnOfRound = true;
 	}
 
 	public static bool CheckForWin() {
-		List<Player> alivePlayers = Players.FindAll(p => !p.IsDead);
+		IEnumerable<Player> alivePlayers = Players.Where(p => !p.IsDead);
 
-		if(alivePlayers.Count == 1) {
-			WinnerPlayer = alivePlayers[0];
-			return true;
+		if(alivePlayers.Count() > 1) {
+			return false;
 		}
 
-		return false;
+		OnPlayerWon?.Invoke(alivePlayers.First());
+		GameContext.Reset();
+
+		return true;
 	}
 }

@@ -14,17 +14,15 @@ public partial class GameManager : Node {
 			s.Init(this);
 		}
 
+		GameContext.OnPlayerWon += (Player winner) => {
+			OS.Alert("Wygrał gracz " + winner.Name);
+			GetTree().ChangeSceneToFile("res://scenes/menu.tscn");
+		};
+
 		SetScreen(ActionScreen);
 	}
 
 	public void SetScreen(GameScreen screen) {
-		if(GameContext.CheckForWin()) {
-			OS.Alert("Wygrał gracz " + GameContext.WinnerPlayer.Name);
-			GameContext.Reset();
-			GetTree().ChangeSceneToFile("res://scenes/menu.tscn");
-			return;
-		}
-
 		foreach(GameScreen s in m_screenContainer.GetChildren()) {
 			if(s.Visible) {
 				s.Exit();

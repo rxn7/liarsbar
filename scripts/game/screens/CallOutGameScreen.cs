@@ -20,7 +20,7 @@ public partial class CallOutGameScreen : GameScreen {
 	}
 
 	public override void Enter() {
-		CalledOutPlayer = GameContext.GetPreviousPlayer();
+		CalledOutPlayer = GameContext.GetPreviousAlivePlayer();
 
 		m_callingPlayerLabel.Text = $"Sprawdza: {GameContext.CurrentPlayer.Name}";
 		m_calledPlayerLabel.Text = $"Czy gracz {CalledOutPlayer.Name} mówił prawdę?";
